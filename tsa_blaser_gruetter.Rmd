@@ -2,28 +2,28 @@
 
 ## Inhaltsverzeichnis
 
-## 1. Einleitung
+## 1. Einleitung (Bodo)
 
-* Motivation
+* Motivation 
 * Zielsetzung
 
 ## 2. Literatur-Review
 
-* Portfoliomanagement
-* SMI
+* Portfoliomanagement (Bodo)
+* SMI (Markus)
   + https://www.six-group.com/exchanges/indices/security_info_de.html?id=CH0009980894CHF9
   
 
-## 3. Methodik
+## 3. Methodik (Markus)
 
 * Hypothesen (Wie würden wir das Aktienportfolio aufgrund der Theorie zusammenstellen?)
 * Vorgehen (schrittweises Vorgehen gemäss R-File)
 
-## 4. Ergebnisse
+## 4. Ergebnisse (Markus)
 
 * Wichtigste Ergebnisse gemäss definiertem Vorgehen (mit R-Code)
 
-## 5. Schlussfolgerung
+## 5. Schlussfolgerung (Bodo)
 
 * Zusammensetzung des Aktienportfolios aufgrund der Ergebnisse
 
