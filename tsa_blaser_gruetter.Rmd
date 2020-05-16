@@ -1,0 +1,28 @@
+### **Zusammenstellung eines Aktienportfolios aus dem SMI**
+
+## Inhaltsverzeichnis
+
+## 1. Einleitung
+
+* Motivation
+* Zielsetzung
+
+## 2. Literatur-Review
+
+* Portfoliomanagement
+* SMI
+
+## 3. Methodik
+
+* Hypothesen (Wie würden wir das Aktienportfolio aufgrund der Theorie zusammenstellen?)
+* Vorgehen (schrittweises Vorgehen gemäss R-File)
+
+## 4. Ergebnisse
+
+* Wichtigste Ergebnisse gemäss definiertem Vorgehen (mit R-Code)
+
+## 5. Schlussfolgerung
+
+* Zusammensetzung des Aktienportfolios aufgrund der Ergebnisse
+
+## Literaturverzeichnis
