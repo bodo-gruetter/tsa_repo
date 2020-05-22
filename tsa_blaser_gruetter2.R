@@ -4,6 +4,7 @@
 #install.packages("ROI")
 #install.packages("ggplot2")
 #install.packages("dplyr")
+#install.packages("forecast")
 
 library(quantmod)
 library(PortfolioAnalytics)
@@ -11,6 +12,7 @@ library(PerformanceAnalytics)
 library(ROI)
 library(ggplot2)
 library(dplyr)
+library(forecast)
 
 # colum names for later use, contains all names of SMI companies (except SIKA)
 col_names <- c("Zurich", "Roche", "UBS", "Novartis", "SwissRe", "ABB", "SwissLife", "Lonza", "CreditSuisse", 
@@ -157,3 +159,19 @@ ggplot(data = end_val, aes(x = "", y = money, fill = company)) +
   labs(x = "", y = "", title = "Investment at End") +
   theme(axis.ticks = element_blank(), axis.text = element_blank(), legend.position = c(0.2, 0), legend.justification = c(0.1, 0), plot.title = element_text(hjust = 0.5)) +
   guides(fill = guide_legend(title = NULL, nrow = 1))
+
+# cumulative all returns
+cumret <- cumprod(1+minVarReturns)
+# calculate Arima from the cumulative returns
+fit <- Arima(cumret, order = c(0, 1, 0), include.drift = TRUE)
+summary(fit)
+
+# print the residuals
+checkresiduals(fit)
+
+# calculate the forecast for the next 12 and 24 Lag
+smi_forecast <- forecast(fit, h = 24)
+smi_forecast <- forecast(fit, h = 12)
+
+# print the forecast
+plot(smi_forecast)
