@@ -59,7 +59,6 @@ portMeanVar
 # calculate the optimal portfolio based on the ROI method
 opt_single <- optimize.portfolio(R = returns, portfolio = portMeanVar, optimize_method = "ROI")
 
-
 minVarReturns <- Return.portfolio(returns, weight = extractWeights(opt_single))
 table.AnnualizedReturns(R = minVarReturns, Rf = 0.01/250)
 chart.Weights(opt_single)
@@ -89,18 +88,11 @@ for (i in 1:length(col_names))
 {
   first <- as.numeric(first(data[, col_names[i]]))
   last <- as.numeric(last(data[, col_names[i]]))
-  
-  print(first)
-  print(last)
-  
-  share_number <- floor(total_investment * opt_single$weights[i] / first)
+
+  share_number <- round((total_investment * opt_single$weights[i] / first), 0)
   if (share_number < 0)
     share_number = 0
-  
-  print(share_number)
-  print(share_number * first)
-  print(share_number * last)
-  
+
   shares[1, i] <- share_number
   shares[2, i] <- share_number * first
   shares[3, i] <- share_number * last
@@ -162,8 +154,10 @@ ggplot(data = end_val, aes(x = "", y = money, fill = company)) +
 
 # cumulative all returns
 cumret <- cumprod(1+minVarReturns)
+acf(cumret, main = "Optimal Portfolio")
+pacf(cumret, main = "Optimal Portfolio")
 # calculate Arima from the cumulative returns
-fit <- Arima(cumret, order = c(0, 1, 0), include.drift = TRUE)
+fit <- Arima(cumret, order = c(7, 0, 0), include.drift = TRUE)
 summary(fit)
 
 # print the residuals
