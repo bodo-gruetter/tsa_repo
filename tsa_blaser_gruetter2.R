@@ -169,3 +169,12 @@ smi_forecast <- forecast(fit, h = 12)
 
 # print the forecast
 plot(smi_forecast)
+
+# Get the SMI Data
+smi <- getSymbols.yahoo("^SSMI", from="2010-01-01", to="2020-05-08", periodicity = "weekly",
+                        auto.assign=FALSE)[,6]
+
+# calculate the SMI returns
+smi_returns <- Return.calculate(smi, method = "simple")
+# print a chart to compare smi_returns vs. portfolio returns
+chart.CumReturns(cbind(smi_returns, minVarReturns), main = "Performance Portfolio vs. SMI")
