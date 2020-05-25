@@ -176,5 +176,8 @@ smi <- getSymbols.yahoo("^SSMI", from="2010-01-01", to="2020-05-08", periodicity
 
 # calculate the SMI returns
 smi_returns <- Return.calculate(smi, method = "simple")
+smi_returns <- smi_returns[-1, ]
 # print a chart to compare smi_returns vs. portfolio returns
-chart.CumReturns(cbind(smi_returns, minVarReturns), main = "Performance Portfolio vs. SMI")
+compare <- cbind(smi_returns, minVarReturns)
+colnames(compare) <- c("SMI", "Portfolio")
+chart.CumReturns(compare, main = "Performance Portfolio vs. SMI", legend.loc = "topleft")
